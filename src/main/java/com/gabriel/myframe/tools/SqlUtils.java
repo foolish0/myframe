@@ -58,6 +58,12 @@ public class SqlUtils {
                 SqlNode selectNode = basicCall.getOperandList().get(0);
                 handlerSql(selectNode, fieldList, tableList);
                 break;
+            case IN:
+                SqlBasicCall basicCall1 = (SqlBasicCall) sqlNode;
+                List<SqlNode> operandList = basicCall1.getOperandList();
+                handlerField(operandList.get(0), fieldList);
+                handlerSql(operandList.get(1), fieldList, tableList);
+                break;
             default:
                 break;
         }
@@ -83,7 +89,7 @@ public class SqlUtils {
         handlerFrom(sqlSelect.getFrom(), fieldList, tableList);
 
         if (sqlSelect.hasWhere()) {
-            handlerField(sqlSelect.getWhere(), fieldList);
+            handlerSql(sqlSelect.getWhere(), fieldList, tableList);
         }
 
         if (sqlSelect.hasOrderBy()) {
