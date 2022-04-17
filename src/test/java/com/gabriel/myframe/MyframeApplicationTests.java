@@ -22,7 +22,7 @@ class MyframeApplicationTests {
 //        String sql = "SELECT sum(x.dd) as xx ,2 from db.a x where id = xx and c = 'zz'  " +
 //                "union all SELECT sum(f) as xx,e FROM db.B left join B.dd on dd.xx=b.cc WHERE g = h";
 //        String sql = "select * from table_name where id = ? and name = ? order by name";
-        String sql = "select * from table_a a left join table_b b on a.id = b.id where a.id in (select id from table_c)";
+        String sql = "select id as i from table_a a left join table_b b on a.id = b.id where a.id in (select id from table_c)";
         try {
             SqlUtils.getSqlInfo(sql);
         } catch (SqlParseException e) {

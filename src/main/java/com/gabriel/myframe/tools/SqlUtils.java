@@ -141,11 +141,8 @@ public class SqlUtils {
         SqlKind kind = field.getKind();
         switch (kind) {
             case AS:
-                @Nullable SqlNode[] operandsAs = ((SqlBasicCall) field).operands;
-                SqlNode leftAs = operandsAs[0];
-                if (leftAs != null) {
-                    handlerField(leftAs, fieldList);
-                }
+                List<SqlNode> operandList = ((SqlBasicCall) field).getOperandList();
+                handlerField(operandList.get(0), fieldList);
                 break;
             case IDENTIFIER:
                 // 当前为子节点
@@ -155,12 +152,9 @@ public class SqlUtils {
                 break;
             default:
                 if (field instanceof SqlBasicCall) {
-                    @Nullable SqlNode[] nodes = ((SqlBasicCall) field).operands;
-                    for (SqlNode node : nodes) {
-                        if (node != null) {
-                            handlerField(node, fieldList);
-                        }
-                    }
+                    ((SqlBasicCall) field).getOperandList().forEach(node -> {
+                        handlerField(node, fieldList);
+                    });
                 }
                 if (field instanceof SqlNodeList) {
                     ((SqlNodeList) field).getList().forEach(sqlNode -> {
