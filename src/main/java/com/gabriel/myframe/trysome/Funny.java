@@ -1,4 +1,4 @@
-package com.gabriel.myframe.common;
+package com.gabriel.myframe.trysome;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
