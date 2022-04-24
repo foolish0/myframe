@@ -1,4 +1,4 @@
-package com.gabriel.myframe.common.netty;
+package com.gabriel.myframe.common.netty.httpserver;
 
 import java.io.IOException;
 import java.io.PrintWriter;
