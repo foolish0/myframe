@@ -4,6 +4,7 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
@@ -13,8 +14,8 @@ import io.netty.channel.epoll.EpollChannelOption;
 public class HttpServer {
     public static void main(String[] args) {
         int port = 8080;
-        NioEventLoopGroup bossGroup = new NioEventLoopGroup(2);
-        NioEventLoopGroup workerGroup = new NioEventLoopGroup(16);
+        EventLoopGroup bossGroup = new NioEventLoopGroup(2);
+        EventLoopGroup workerGroup = new NioEventLoopGroup(16);
 
         try {
             ServerBootstrap bootstrap = new ServerBootstrap();

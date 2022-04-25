@@ -20,14 +20,13 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        super.channelReadComplete(ctx);
+        // ctx.write()并不会立即完成，而是缓存起来，当调用ctx.flush()时才会被发送
+        ctx.flush();
     }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         try {
-
-        } catch (Exception e) {
             FullHttpRequest request = (FullHttpRequest) msg;
             String uri = request.uri();
             if (uri.startsWith("/hello")) {
@@ -35,12 +34,14 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
             } else {
                 service(ctx, request, "who are you?");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             ReferenceCountUtil.release(msg);
         }
     }
 
-    private void service(ChannelHandlerContext ctx, FullHttpRequest request, String body) {
+    private void service(ChannelHandlerContext ctx, FullHttpRequest request, String body) throws RuntimeException{
         if (Objects.isNull(request)) {
             throw new RuntimeException("请求体为空！");
         }
