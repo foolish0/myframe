@@ -6,8 +6,6 @@ import org.apache.calcite.config.Lex;
 import org.apache.calcite.sql.*;
 import org.apache.calcite.sql.parser.SqlParseException;
 import org.apache.calcite.sql.parser.SqlParser;
-import org.checkerframework.checker.nullness.qual.Nullable;
-
 import java.util.List;
 
 /**
