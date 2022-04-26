@@ -20,8 +20,7 @@ public class OkHttpDemo {
     public static String execGetReq(String url, Map<String, String> headers) {
         Request.Builder requestBuilder = new Request.Builder().url(url);
         if (headers != null && headers.size() > 0) {
-            headers.entrySet().stream().forEach(header ->
-                    requestBuilder.header(header.getKey(), header.getValue()));
+            headers.forEach(requestBuilder::header);
         }
         Request request = requestBuilder.url(url).build();
         try {
