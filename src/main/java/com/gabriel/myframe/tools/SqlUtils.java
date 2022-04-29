@@ -17,6 +17,13 @@ public class SqlUtils {
             .withLex(Lex.JAVA)
             .withCaseSensitive(true);
 
+    /**
+     * 解析sql语句，获取表名、字段名
+     *
+     * @param sql sql语句
+     * @return SqlInfo
+     * @throws SqlParseException sql解析异常
+     */
     public static SqlInfo getSqlInfo(String sql) throws SqlParseException {
         SqlParser parser = SqlParser.create(sql, CONFIG);
         SqlNode sqlNode = parser.parseQuery();
