@@ -15,15 +15,20 @@ public class ThreadLocalDemo {
 
     public static void main(String[] args) {
         Map<String, Object> param = Maps.newHashMap();
-        param.put("A", Arrays.asList(1, 2, 3, 4, 5));
+        param.put("Outer", Arrays.asList(1, 2, 3, 4, 5));
         local.set(param);
         print(Thread.currentThread().getName());
 
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Map<String, Object> param = Maps.newHashMap();
+                param.put("Inner", Thread.currentThread().getName());
+                local.set(param);
                 print(Thread.currentThread().getName());
             }
         }, "thread0").start();
+
+        print(Thread.currentThread().getName() + " -- after");
     }
 }
