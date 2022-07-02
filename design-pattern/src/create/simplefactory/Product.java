@@ -1,6 +1,6 @@
 package create.simplefactory;
 
-public class Product {
+public abstract class Product {
     private String name;
 
     public void printName() {

@@ -8,7 +8,7 @@ public class Factory {
             case "B":
                 return new ProductB(name);
             default:
-                return new Product(name);
+                throw new RuntimeException("No such product!");
         }
     }
 }
