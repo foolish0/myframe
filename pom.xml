@@ -61,6 +61,16 @@
             <artifactId>calcite-core</artifactId>
             <version>1.30.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.calcite</groupId>
+            <artifactId>calcite-example-csv</artifactId>
+            <version>1.21.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.calcite</groupId>
+            <artifactId>calcite-elasticsearch</artifactId>
+            <version>1.30.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

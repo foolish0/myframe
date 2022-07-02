@@ -1,4 +1,8 @@
 package create.simplefactory;
 
-public class ProductA {
+public class ProductB extends Product {
+
+    public ProductB(String name) {
+        super(name);
+    }
 }
