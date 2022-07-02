@@ -1,8 +1,9 @@
 package create.simplefactory;
 
-public class ProductB extends Product {
+public class ProductB implements Product {
 
-    public ProductB(String name) {
-        super(name);
+    @Override
+    public void printName() {
+        System.out.println(this.getClass().getName() + "-B");
     }
 }

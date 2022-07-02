@@ -1,12 +1,12 @@
 package create.simplefactory;
 
 public class Factory {
-    public static Product create(String name) {
+    public Product create(String name) {
         switch (name) {
             case "A":
-                return new ProductA(name);
+                return new ProductA();
             case "B":
-                return new ProductB(name);
+                return new ProductB();
             default:
                 throw new RuntimeException("No such product!");
         }
